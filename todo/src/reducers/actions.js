@@ -3,7 +3,7 @@ import { fetchTasksSuccess, addTaskSuccess, deleteTaskSuccess, fetchTasksError }
 
 export const fetchTasks = (filter = "all") => async (dispatch) => {
   try {
-    const response = await axios.get(`https://advanced-react-to-do-application.onrender.com/task/filter?filter=${filter}`);
+    const response = await axios.get(`http://localhost:8000/task/filter?filter=${filter}`);
     dispatch(fetchTasksSuccess(response.data));
   } catch (error) {
     dispatch(fetchTasksError(error.message));
@@ -12,7 +12,7 @@ export const fetchTasks = (filter = "all") => async (dispatch) => {
 
 export const addTask = (task) => async (dispatch) => {
   try {
-    const response = await axios.post("https://advanced-react-to-do-application.onrender.com/task/addtasks", task);
+    const response = await axios.post("http://localhost:8000/task/addtasks", task);
     console.log(response.data)
     dispatch(addTaskSuccess(response.data));
   } catch (error) {
@@ -22,7 +22,7 @@ export const addTask = (task) => async (dispatch) => {
 
 export const deleteTask = (id) => async (dispatch) => {
   try {
-    await axios.delete(`https://advanced-react-to-do-application.onrender.com/task/tasks/${id}`);
+    await axios.delete(`http://localhost:8000/task/tasks/${id}`);
     dispatch(deleteTaskSuccess(id));
   } catch (error) {
     dispatch(fetchTasksError(error.message));
@@ -30,7 +30,7 @@ export const deleteTask = (id) => async (dispatch) => {
 };
 export const toggleComplete = (id, currentStatus) => async (dispatch) => {
   try {
-      const response = await axios.patch(`https://advanced-react-to-do-application.onrender.com/task/status/${id}`, { status: currentStatus });
+      const response = await axios.patch(`http://localhost:8000/task/status/${id}`, { status: currentStatus });
       dispatch(fetchTasks());
   } catch (error) {
       console.error("Error toggling task status:", error);
@@ -39,7 +39,7 @@ export const toggleComplete = (id, currentStatus) => async (dispatch) => {
 
 export const toggleImportant = (id) => async (dispatch) => {
   try {
-    const response = await axios.patch(`https://advanced-react-to-do-application.onrender.com/task/important/${id}`);
+    const response = await axios.patch(`http://localhost:8000/task/important/${id}`);
     dispatch(fetchTasks());  
   } catch (error) {
     console.error("Error updating important status:", error);

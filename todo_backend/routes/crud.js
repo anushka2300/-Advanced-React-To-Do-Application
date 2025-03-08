@@ -3,15 +3,14 @@ const router = express.Router();
 const Task=require('../models/task')
 
 router.post('/addtasks', async (req,res)=>{
-  try {
-    const { title } = req.body;
-    const newTask = new Task({ title, status: "not completed" }); 
-    await newTask.save();
-    const tasks = await Task.find();   
-    res.status(201).json(tasks);   
-} catch (error) {
-    res.status(500).json({ message: 'Error adding task' });
-}
+    try {
+        const { title} = req.body;
+        const newTask = new Task({ title });
+        await newTask.save();
+        res.status(201).json(newTask);
+      } catch (error) {
+        res.status(500).json({ message: 'Error adding task' });
+      }
     }
 );        
 
