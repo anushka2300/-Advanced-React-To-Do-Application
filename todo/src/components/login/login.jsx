@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // For redirection
+import { useNavigate } from "react-router-dom";  
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Hook for redirection
+  const navigate = useNavigate();  
 
-  // Handle input changes
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // **Signup API Call**
+  
   const handleSignup = async () => {
     try {
       const response = await fetch("http://localhost:8000/auth/signup", {
@@ -28,14 +28,14 @@ const Auth = () => {
       }
 
       alert("Signup successful! You can now log in.");
-      setIsLogin(true); // Switch to login form
+      setIsLogin(true);  
     } catch (error) {
       console.log(error);
       setError("Something went wrong. Please try again.");
     }
   };
 
-  // **Login API Call**
+  
   const handleLogin = async () => {
     try {
       const response = await fetch("http://localhost:8000/auth/login", {

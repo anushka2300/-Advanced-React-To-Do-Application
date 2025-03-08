@@ -82,5 +82,26 @@ router.post("/logout", authMiddleware, async (req, res) => {
     }
 });
 
+router.get('/getuser',authMiddleware,async (req,res)=>{
+    try{
+    if (!req.user) {
+        return res.status(401).send({ status: "error", message: "Unauthorized access" });
+      }
+      res.status(200).json({
+        status: "ok",
+        success: true,
+        user: {
+            name: req.user.name,
+            email: req.user.email,
+            id: req.user._id
+        }
+    });
+    }
+    catch(err){
+        console.log(err);
+    }
+})
+
+
 module.exports=router;
 

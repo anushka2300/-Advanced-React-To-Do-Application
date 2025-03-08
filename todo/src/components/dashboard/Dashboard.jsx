@@ -17,7 +17,8 @@ export default function TaskDashboard() {
   const [selectedTask, setSelectedTask] = useState(null);
   const [activeTab, setActiveTab] = useState("Today");
   const { theme } = useTheme();
-
+  
+  
   useEffect(() => {
     dispatch(fetchTasks());
   }, [dispatch]);
@@ -80,8 +81,7 @@ export default function TaskDashboard() {
               <img src="https://png.pngtree.com/png-vector/20240529/ourlarge/pngtree-office-girl-wearing-formal-dress-with-brown-long-hair-style-png-image_12502555.png" alt="Profile" className="w-20 h-20 rounded-full mb-3" />
               <h2 className="text-lg font-semibold mb-6">Hey, ABCD</h2>
             </div>
-
-            {/* Sidebar Navigation */}
+ 
             <ul className="space-y-3">
               <li onClick={() => handleTabChange("All")} className={`flex items-center space-x-3 p-3 rounded-md cursor-pointer ${ activeTab === "all" ? "bg-green-700" : hoverBgClass}`}>
                 <FaClipboardList size={20} />
@@ -127,7 +127,7 @@ export default function TaskDashboard() {
             </div>
           </div>
 
-          {/* Task List */}
+        
           <h3 className="text-lg font-semibold mt-6">{activeTab} Tasks</h3>
           <div className="mt-3">
             {tasks
