@@ -6,10 +6,8 @@ body.dark {
   }
   
   body.light {
-    background-color: #f9fafb;
+    background-color: #dfdfdf;
     color: #1f2937;
   }
   
-  * {
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+  
